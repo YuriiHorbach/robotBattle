@@ -9,9 +9,9 @@ def atack2 arr
   arr[i] = arr[i] - randLifeTake
   if arr[i] <= 0
      arr[i] = 0
-     puts "Robot with number #{i+1} terminated"
+     puts "Robot with index #{i} terminated"
   else
-    puts "Missed in number #{i+1}"
+    puts "Missed in index #{i}"
   end
 end
 
@@ -43,32 +43,18 @@ def victory?
 end
 
 def countRobotWithLife arr
-  arr.each do |i|
-    if i > 0
-      puts i
+  arr.each_with_index do |name, index|
+    if name > 0
+      puts "#{index}: #{name}"
     end
   end
 end
-############################# try to findout how to output index number of array element
-def getIndex arr
-  arr2 = []
-  arr.each do |i|
-    if i > 0
-      arr2 << arr[i]
-    end
-  end
-
-  puts arr2
-
-end
-#############################
 
 def stats
   x = @arr1.count{|x| x > 0}
   y = @arr2.count{|x| x > 0}
   # if x > 0
     puts "1 team has #{x} robots: #{@arr1}"
-    getIndex @arr1
     countRobotWithLife @arr1
   # else
   #   print "1 team has 0 robots."
@@ -78,7 +64,6 @@ def stats
 
   # if y > 0
     puts "2 team has #{y} robots: #{@arr2}"
-    getIndex @arr2
     countRobotWithLife @arr2
   # else
     # print "2 team has 0 robots."
